@@ -1,2 +1,36 @@
 # important-stuff
 A consolidated list of commands I keep forgetting
+
+Sort ALL mirrors according to speed and overwrite the current mirrorlist with the result in Arch Linux:
+```bash
+reflector --verbose --sort rate --save /etc/pacman.d/mirrorlist
+```
+---
+
+Change the permissions to 0755 on all subdirectories of the current directory:
+```bash
+find . -type d -print0 | xargs -0 chmod 0755
+```
+---
+
+Change the permissions to 0644 on all files in the current directory and subdirectories:
+```bash
+find . -type f -print0 | xargs -0 chmod 0644
+```
+---
+
+Generate a correct keyframes file for `input.mkv` with ffmpeg (this is particularly useful for fansubbing):
+```bash
+ffmpeg -i input.mkv -f yuv4mpegpipe -vf scale=640:360 -pix_fmt yuv420p -vsync drop - | scxvid input_keyframes.log
+```
+
+Kill whatever process is running on port `8080`:
+```bash
+kill $(lsof -t -i :8080)
+```
+---
+
+Stop and remove all currently running dockers (requires root):
+```bash
+docker rm -f $(docker ps -a -q)
+```
