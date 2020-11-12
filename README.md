@@ -23,6 +23,13 @@ Generate a correct keyframes file for `input.mkv` with ffmpeg (this is particula
 ```bash
 ffmpeg -i input.mkv -f yuv4mpegpipe -vf scale=640:360 -pix_fmt yuv420p -vsync drop - | scxvid input_keyframes.log
 ```
+---
+
+Create hard links in current directory for all mkv files in source directory:
+```bash
+for x in path/to/source/directory/*.mkv; do ln `$(basename "$x")` "$x"; done
+```
+---
 
 Kill whatever process is running on port `8080`:
 ```bash
