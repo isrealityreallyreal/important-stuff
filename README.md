@@ -7,6 +7,20 @@ reflector --verbose --sort rate --save /etc/pacman.d/mirrorlist
 ```
 ---
 
+Enable midi when using wine to play old games:
+```bash
+fluidsynth -l -s -i -aalsa -o audio.alsa.device=default gm.sf2 &
+```
+
+---
+
+Convert a midi file and a soundfont to a flac file with fluidsynth:
+```bash
+fluidsynth -ni gm.sf2 file.midi -F file.flac -r 44100
+```
+
+---
+
 Change the permissions to 0755 on all subdirectories of the current directory:
 ```bash
 find . -type d -print0 | xargs -0 chmod 0755
